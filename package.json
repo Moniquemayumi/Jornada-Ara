@@ -1,11 +1,14 @@
 {
-  "name": "jornada-ara-ranking",
+  "name": "jornada-ara",
+  "version": "2.0.0",
   "private": true,
-  "version": "1.0.0",
-  "engines": {
-    "node": ">=20"
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "wrangler pages dev dist",
+    "db:local": "wrangler d1 execute jornada-ara-ranking --local --file=./schema.sql",
+    "db:remote": "wrangler d1 execute jornada-ara-ranking --remote --file=./schema.sql"
   },
-  "dependencies": {
-    "@netlify/blobs": "^8.1.0"
+  "devDependencies": {
+    "wrangler": "^4.0.0"
   }
 }
