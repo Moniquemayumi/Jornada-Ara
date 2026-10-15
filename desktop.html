@@ -215,7 +215,7 @@ function menu(){S.sc='menu';S.mode='';$('pb').style.display='none';const pr=tot(
 function newRun(){SV.run={mode:SV.team.mode,score:[0,0,0,0,0],entrySaved:false};save()}
 
 /* Ranking compartilhado entre celulares e computadores quando hospedado no Netlify. */
-const RANK_API='/.netlify/functions/ranking';
+const RANK_API='/api/ranking';
 let onlineEntries={solo:[],groups:[]},rankStatus='';
 async function fetchRankingOnline(){
  try{const response=await fetch(RANK_API,{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();onlineEntries={solo:Array.isArray(data.solo)?data.solo:[],groups:Array.isArray(data.groups)?data.groups:[]};rankStatus='online';return true}
