@@ -1,26 +1,21 @@
 # Jornada ARA 🎮
 
-Jogo web com versões para computador e celular, cinco áreas do Grupo ARA e a fase Corporativo.
+Jogo de plataforma 2D do Grupo ARA, com versões mobile e desktop, acessibilidade e ranking individual/grupos.
 
-## Arquivos
-- `index.html`: direciona para mobile ou desktop conforme o dispositivo.
-- `mobile.html` e `desktop.html`: jogos completos.
-- `testar-ranking.html`: diagnóstico do ranking.
-- `netlify/functions/ranking.js`: API do ranking (individuais e grupos).
-- `netlify.toml` e `package.json`: configuração de build e funções do Netlify.
+## Cloudflare Pages + D1
 
-## Publicação no Netlify
-**Importante:** mantenha o site existente `jornada-ara-jogo.netlify.app`. No painel do Netlify, conecte **este repositório ao projeto existente**, não crie outro site.
-- Publish directory: `.`
-- Functions directory: `netlify/functions`
-- Dependências: instaladas a partir de `package.json`
+O repositório foi preparado para **Cloudflare Pages Functions** usando o banco **Cloudflare D1**.
 
-O Netlify pode bloquear novos deploys se os créditos da equipe estiverem esgotados.
+- Site: `index.html`, `mobile.html`, `desktop.html`
+- API: `functions/api/ranking.js` — endpoint `/api/ranking`
+- Banco: `schema.sql`
+- Build: `npm run build`, saída `dist`
+- Instruções: [CLOUDFLARE_SETUP.md](./CLOUDFLARE_SETUP.md)
 
-## Verificação
-Após um deploy bem-sucedido, abra `https://jornada-ara-jogo.netlify.app/testar-ranking.html` e `/.netlify/functions/ranking`. A API deve responder JSON com `solo` e `groups`. Teste uma pontuação em um celular e confira no computador.
+**Ainda é necessário criar o banco D1 na sua conta, executar `schema.sql`, vincular o D1 à variável `DB` no projeto Pages e fazer o deploy.** O GitHub está atualizado, mas a hospedagem Cloudflare ainda não foi ativada.
 
-O ranking não possui autenticação ou verificação criptográfica das partidas. Para uma competição oficial com prevenção a fraudes, será preciso fortalecer o servidor.
+O ranking usa pontuações enviadas pelo navegador e ainda não tem verificação antifraude de partidas.
 
-## Status
-Arquivos do jogo e API enviados ao GitHub. **Deploy no Netlify ainda não concluído.**
+## Netlify (legado)
+
+Os arquivos `netlify.toml` e `netlify/functions/ranking.js` continuam no repositório como referência da antiga implantação; o jogo agora usa o endpoint Cloudflare.
