@@ -1,17 +1,26 @@
 # Jornada ARA 🎮
 
-Jogo educativo do Grupo ARA, com fases Têxtil, Agrícola, Hotéis, Empreendimentos, Energia e Corporativo.
+Jogo web com versões para computador e celular, cinco áreas do Grupo ARA e a fase Corporativo.
 
-## Situação de publicação
-O backend do ranking está no repositório em `netlify/functions/ranking.js`, com dependência `@netlify/blobs` no `package.json` e configuração em `netlify.toml`.
+## Arquivos
+- `index.html`: direciona para mobile ou desktop conforme o dispositivo.
+- `mobile.html` e `desktop.html`: jogos completos.
+- `testar-ranking.html`: diagnóstico do ranking.
+- `netlify/functions/ranking.js`: API do ranking (individuais e grupos).
+- `netlify.toml` e `package.json`: configuração de build e funções do Netlify.
 
-**Ainda faltam os arquivos grandes do jogo:** `index.html`, `mobile.html`, `desktop.html` e recursos visuais. Não vincule este repositório ao site em produção antes de adicioná-los.
+## Publicação no Netlify
+**Importante:** mantenha o site existente `jornada-ara-jogo.netlify.app`. No painel do Netlify, conecte **este repositório ao projeto existente**, não crie outro site.
+- Publish directory: `.`
+- Functions directory: `netlify/functions`
+- Dependências: instaladas a partir de `package.json`
 
-## Publicação
-1. Envie os arquivos do jogo para a raiz deste repositório.
-2. No Netlify, abra o projeto existente jornada-ara-jogo e conecte este repositório em Build & deploy / Continuous deployment.
-3. Confirme Publish directory = `.` e Functions directory = `netlify/functions`.
-4. Faça o deploy e teste `/.netlify/functions/ranking`. O retorno esperado é JSON com listas `solo` e `groups`.
-5. Teste uma pontuação em um celular e veja se aparece em outro dispositivo.
+O Netlify pode bloquear novos deploys se os créditos da equipe estiverem esgotados.
 
-O ranking ainda não valida pontuações obtidas no cliente; não é à prova de fraudes.
+## Verificação
+Após um deploy bem-sucedido, abra `https://jornada-ara-jogo.netlify.app/testar-ranking.html` e `/.netlify/functions/ranking`. A API deve responder JSON com `solo` e `groups`. Teste uma pontuação em um celular e confira no computador.
+
+O ranking não possui autenticação ou verificação criptográfica das partidas. Para uma competição oficial com prevenção a fraudes, será preciso fortalecer o servidor.
+
+## Status
+Arquivos do jogo e API enviados ao GitHub. **Deploy no Netlify ainda não concluído.**
