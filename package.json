@@ -1,0 +1,11 @@
+{
+  "name": "jornada-ara-ranking",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
